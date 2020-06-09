@@ -4,19 +4,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "AdsIndexServlet", urlPatterns = ("/ads"))
 public class AdsIndexServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        request.setAttribute("ads", DaoFactory.getAdsDao().all());
+        List<Ad> ads = DaoFactory.getAdsDao().all();
+        request.setAttribute("ads", ads);
         request.getRequestDispatcher(("/ads/index.jsp")).forward(request, response);
-        //        Ads ads = DaoFactory.getAdsDao();
-
-//        Products products = DaoFactory.getProductsDao();
-//        List<Product> productList = products.all();
-//        request.setAttribute("products", productList);
-//        request.getRequestDispatcher("/products/index.jsp").forward(request, response);
     }
 }
