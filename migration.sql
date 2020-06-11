@@ -18,6 +18,7 @@ create table ads (
     user_id int unsigned not null,
     title varchar(240) not null,
     description text not null,
+    primary key (id),
     foreign key (user_id) references users (id)
         on delete cascade
 );
